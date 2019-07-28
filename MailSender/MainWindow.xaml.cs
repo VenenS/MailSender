@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MailSender.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -31,8 +32,8 @@ namespace MailSender
             cbSmtpSelect.ItemsSource = VariablesSmtp.Smtpserv;
             cbSmtpSelect.DisplayMemberPath = "Key";
             cbSmtpSelect.SelectedValue = "Value";
-            DBClass db = new DBClass();
-            dgEmails.ItemsSource = db.Emails;
+            //DBClass db = new DBClass();
+            //dgEmails.ItemsSource = db.Emails;
         }
 
 
@@ -69,8 +70,10 @@ namespace MailSender
                 return;
             }
             EmailSendServiceClass emailSender = new EmailSendServiceClass(strLogin, strPassword, strBody, strSubject,
-                smtpServ, sPort);
-            emailSender.SendMails((IQueryable<Email>)dgEmails.ItemsSource);
+            smtpServ, sPort);
+            //emailSender.SendMails((IQueryable<Email>)dgEmails.ItemsSource);
+            var locator = (ViewModelLocator)FindResource("Locator");
+            emailSender.SendMails(locator.Main.Emails);
         }
 
         private void BtnSend_Click(object sender, RoutedEventArgs e)
@@ -91,8 +94,9 @@ namespace MailSender
             EmailSendServiceClass emailSender = new EmailSendServiceClass(cbSenderSelect.Text,
                 cbSenderSelect.SelectedValue.ToString(), BodyPost.Text, SubjectPost.Text, cbSmtpSelect.Text, 
                 int.Parse(((KeyValuePair<string, int>)cbSenderSelect.SelectedItem).Value.ToString()));
-            sc.SendEmails(dtSendDateTime, emailSender, (IQueryable<Email>)dgEmails.ItemsSource);
-
+            //sc.SendEmails(dtSendDateTime, emailSender, (IQueryable<Email>)dgEmails.ItemsSource);
+            var locator = (ViewModelLocator)FindResource("Locator");
+            sc.SendEmails(dtSendDateTime, emailSender, locator.Main.Emails);
         }
 
         

@@ -4,10 +4,12 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:viiew="clr-namespace:MailSender.View"
         xmlns:fa="http://schemas.fontawesome.io/icons/"
         xmlns:local="clr-namespace:MailSender"
         mc:Ignorable="d"
-        Title="MainWindow" Height="600" Width="1000" Icon="Resources\541760-1920x1080-removebg-preview.png" BorderBrush="Black" OpacityMask="Black">
+        Title="MainWindow" Height="600" Width="1000" Icon="Resources\541760-1920x1080-removebg-preview.png"
+        BorderBrush="Black" OpacityMask="Black">
     <Window.Background>
         <ImageBrush ImageSource="Resources/chernyy-fon-uzory-svet.jpg"/>
     </Window.Background>
@@ -142,16 +144,16 @@
                     <GroupBox Header="Получатели писем" Margin="0,75,0,0" 
                               BorderBrush="#00D5DFE5" Foreground="White" Grid.ColumnSpan="3">
 
-                        <Grid Grid.Row="1">
+                        <Grid Grid.Row="1" x:Name = "tabMakingMailGroup">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="5*"/>
                                 <ColumnDefinition Width="2*"/>
                             </Grid.ColumnDefinitions>
-                            <!--<view:RecipientsInfoViewer Grid.Column="0"/>
-                            <view:RecipientsInfoEditor Grid.Column="1" Margin="10,71,10,122"></view:RecipientsInfoEditor>-->
+                            <viiew:EmailInfoView Grid.Column="0" x:Name="emailInfo"/>
+                            <viiew:SaveEmailView Grid.Column="1" Margin="10,71,10,122" x:Name="saveEmail"/>
                             <GridSplitter Grid.Column="1" HorizontalAlignment="Left"
                                           Width="3" Background="Transparent"/>
-                            <DataGrid AutoGenerateColumns="False" IsReadOnly="True" 
+                            <!--<DataGrid AutoGenerateColumns="False" IsReadOnly="True" 
                                       Background="#00F0F0F0" BorderBrush="#00688CAF"
                                       x:Name="dgEmails"
                                       GridLinesVisibility="None"
@@ -162,7 +164,7 @@
                                     <DataGridTextColumn Header="Email" Binding="{Binding Address}" Width="Auto"/>
                                     <DataGridTextColumn Header="Коментарий" Binding="{Binding Comment}" Width="*"/>
                                 </DataGrid.Columns>
-                            </DataGrid>
+                            </DataGrid>-->
                         </Grid>
                     </GroupBox>
 

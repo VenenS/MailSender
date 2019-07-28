@@ -21,7 +21,7 @@ namespace MailSender.ViewModel
                 return ServiceLocator.Current.GetInstance<MainViewModel>();
             }
         }
-        
-        
+
+
     }
 }

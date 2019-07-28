@@ -6,7 +6,7 @@ using MailSender.Services;
 
 namespace MailSender.ViewModel
 {
-   
+
     public class MainViewModel : ViewModelBase
     {
         ObservableCollection<Email> _Emails;
@@ -24,7 +24,7 @@ namespace MailSender.ViewModel
         void GetEmails()
         {
             Emails.Clear();
-            foreach(var item in _serviceProxy.GetEmails())
+            foreach (var item in _serviceProxy.GetEmails())
             {
                 Emails.Add(item);
             }
@@ -36,7 +36,33 @@ namespace MailSender.ViewModel
         {
             _serviceProxy = servProxy;
             Emails = new ObservableCollection<Email>();
+            EmailInfo = new Email();
+
             ReadAllCommand = new RelayCommand(GetEmails);
+            SaveCommand = new RelayCommand<Email>(SaveEmail);
         }
+
+        Email _EmailInfo;
+        public Email EmailInfo
+        {
+            get { return _EmailInfo; }
+            set
+            {
+                _EmailInfo = value;
+                RaisePropertyChanged(nameof(EmailInfo));
+            }
+        }
+
+        void SaveEmail(Email email)
+        {
+            EmailInfo.Id = _serviceProxy.CreateEmail(email);
+            if (EmailInfo.Id != 0)
+            {
+                Emails.Add(EmailInfo);
+                RaisePropertyChanged(nameof(EmailInfo));
+            }
+        }
+
+        public RelayCommand<Email> SaveCommand { get; set; }
     }
 }
