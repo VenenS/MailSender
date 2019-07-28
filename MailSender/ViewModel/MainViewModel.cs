@@ -21,7 +21,7 @@ namespace MailSender.ViewModel
         }
 
         IDataAccessService _serviceProxy;
-        void GetEmails()
+        public void GetEmails()
         {
             Emails.Clear();
             foreach (var item in _serviceProxy.GetEmails())
@@ -53,7 +53,7 @@ namespace MailSender.ViewModel
             }
         }
 
-        void SaveEmail(Email email)
+        public void SaveEmail(Email email)
         {
             EmailInfo.Id = _serviceProxy.CreateEmail(email);
             if (EmailInfo.Id != 0)

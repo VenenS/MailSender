@@ -14,13 +14,16 @@ namespace MailSender.Services
     }
     public class DataAccessService : IDataAccessService
     {
-        private readonly EmailsDataContext context = new
-            EmailsDataContext();
-
+        EmailsDataContext context;
+        public DataAccessService()
+        {
+            context = new EmailsDataContext();
+        }
         public ObservableCollection<Email> GetEmails()
         {
-            ObservableCollection<Email> Emails = new ObservableCollection<Email>();
-            foreach(var item in context.Email)
+            ObservableCollection<Email> Emails = new
+            ObservableCollection<Email>();
+            foreach (var item in context.Email)
             {
                 Emails.Add(item);
             }
@@ -28,10 +31,10 @@ namespace MailSender.Services
         }
         public int CreateEmail(Email email)
         {
-            if (context.Email.Contains(email)) return email.Id;
             context.Email.InsertOnSubmit(email);
             context.SubmitChanges();
             return email.Id;
         }
     }
+    
 }
