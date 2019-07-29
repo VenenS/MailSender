@@ -12,6 +12,7 @@ namespace MailSender.ViewModel
         {
             ServiceLocator.SetLocatorProvider(() => SimpleIoc.Default);
             SimpleIoc.Default.Register<MainViewModel>();
+            SimpleIoc.Default.Register<IDataAccessService, DataAccessService>();
         }
 
         public MainViewModel Main
