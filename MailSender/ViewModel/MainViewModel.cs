@@ -1,4 +1,6 @@
 using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Windows.Data;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using MailSender.Services;
@@ -15,20 +17,22 @@ namespace MailSender.ViewModel
             get { return _Emails; }
             set
             {
-                _Emails = value;
-                RaisePropertyChanged(nameof(Emails));
+                if (!Set(ref _Emails, value)) return;
+                _emailView = new CollectionViewSource { Source = value };
+                _emailView.Filter+= OnEmailsCollectionViewSourceFilter;
+                RaisePropertyChanged(nameof(EmailsView));
             }
         }
 
-        IDataAccessService _serviceProxy;
-        public void GetEmails()
+        private void OnEmailsCollectionViewSourceFilter(object sender, FilterEventArgs e)
         {
-            Emails.Clear();
-            foreach (var item in _serviceProxy.GetEmails())
-            {
-                Emails.Add(item);
-            }
+            if (!(e.Item is Email email) || string.IsNullOrWhiteSpace(filtName)) return;
+            if (!email.Name.Contains(filtName))
+                e.Accepted = false;
         }
+
+        IDataAccessService _serviceProxy;
+        private void GetEmails() => Emails = _serviceProxy.GetEmails();
 
         public RelayCommand ReadAllCommand { get; set; }
 
@@ -64,5 +68,18 @@ namespace MailSender.ViewModel
         }
 
         public RelayCommand<Email> SaveCommand { get; set; }
+
+        private string filtName;
+        public string FilterName
+        {
+            get => filtName;
+            set
+            {
+                if (!Set(ref filtName, value)) return;
+                EmailsView.Refresh();
+            }
+        }
+        private CollectionViewSource _emailView;
+        public ICollectionView EmailsView => _emailView?.View;
     }
 }
