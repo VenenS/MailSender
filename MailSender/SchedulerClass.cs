@@ -9,7 +9,7 @@ using System.Windows.Threading;
 
 namespace MailSender
 {
-    class SchedulerClass
+    public class SchedulerClass
     {
         DispatcherTimer timer = new DispatcherTimer();
         EmailSendServiceClass emailSender;

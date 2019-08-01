@@ -1,11 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.29001.49
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.757
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MailSender", "MailSender\MailSender.csproj", "{7AB2CAEE-2767-4B49-9450-667AF23F9E27}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodePasswordDLL", "CodePasswordDLL\CodePasswordDLL.csproj", "{510F29BB-5AAE-4E1F-B53E-14BF397F9467}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodePasswordDLL.Tests", "CodePasswordDLL.Tests\CodePasswordDLL.Tests.csproj", "{BB049446-945C-4CC5-8948-D318F35090E0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MailSenderTests", "MailSenderTests\MailSenderTests.csproj", "{8E883A6E-48D2-4A30-ADCB-BC5538EAEBAC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +25,14 @@ Global
 		{510F29BB-5AAE-4E1F-B53E-14BF397F9467}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{510F29BB-5AAE-4E1F-B53E-14BF397F9467}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{510F29BB-5AAE-4E1F-B53E-14BF397F9467}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BB049446-945C-4CC5-8948-D318F35090E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BB049446-945C-4CC5-8948-D318F35090E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BB049446-945C-4CC5-8948-D318F35090E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BB049446-945C-4CC5-8948-D318F35090E0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8E883A6E-48D2-4A30-ADCB-BC5538EAEBAC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8E883A6E-48D2-4A30-ADCB-BC5538EAEBAC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8E883A6E-48D2-4A30-ADCB-BC5538EAEBAC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8E883A6E-48D2-4A30-ADCB-BC5538EAEBAC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
