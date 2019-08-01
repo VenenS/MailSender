@@ -90,7 +90,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="DataValidation.cs" />
     <Compile Include="DBClass.cs" />
+    <Compile Include="Email.cs" />
     <Compile Include="Emails.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
