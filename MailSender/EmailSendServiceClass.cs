@@ -17,8 +17,8 @@ namespace MailSender
         private string strPassword;
         private string strSmtp;
         private int iSmtpPort;
-        private string strBody;
-        private string strSubject;
+        public string strBody;
+        public string strSubject;
 
         public EmailSendServiceClass(string sLogin, string sPassword, string sBody, string sSubject,
             string sSmtp, int sPort)
