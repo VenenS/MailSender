@@ -27,11 +27,10 @@ namespace MailSender
             catch { }
             return tsSendTime;
         }
-        public void SendEmails(DateTime dtSend, EmailSendServiceClass emailSender,
+        public void SendEmails(EmailSendServiceClass emailSender,
             ObservableCollection<Email> emails)
         {
             this.emailSender = emailSender;
-            this.dtSend = dtSend;
             this.emails = emails;
             timer.Tick += Timer_Tick;
             timer.Interval = new TimeSpan(0, 0, 1);
@@ -54,8 +53,7 @@ namespace MailSender
                 timer.Stop();
                 MessageBox.Show("Письма отправлены");
             }
-            else if (dicDates.Keys.First<DateTime>().ToShortTimeString() ==
-                DateTime.Now.ToShortTimeString())
+            else if (dicDates.Keys.First<DateTime>().ToShortTimeString() == DateTime.Now.ToShortTimeString())
             {
                 emailSender.strBody = dicDates[dicDates.Keys.First<DateTime>()];
                 emailSender.strSubject = $"Рассылка от {dicDates.Keys.First<DateTime>().ToShortTimeString()}";

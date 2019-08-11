@@ -96,7 +96,7 @@ namespace MailSender
                 int.Parse(((KeyValuePair<string, int>)cbSenderSelect.SelectedItem).Value.ToString()));
             //sc.SendEmails(dtSendDateTime, emailSender, (IQueryable<Email>)dgEmails.ItemsSource);
             var locator = (ViewModelLocator)FindResource("Locator");
-            sc.SendEmails(dtSendDateTime, emailSender, locator.Main.Emails);
+            sc.SendEmails(emailSender, locator.Main.Emails);
         }
 
         
