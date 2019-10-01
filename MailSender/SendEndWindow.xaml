@@ -5,7 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MailSender"
         mc:Ignorable="d"
-        Title="SendEndWindow" Height="175" Width="400" HorizontalAlignment="Center" VerticalAlignment="Center" WindowStyle="None" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+        Title="SendEndWindow" Height="175" Width="400" HorizontalAlignment="Center" 
+        VerticalAlignment="Center" WindowStyle="None" 
+        ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid>
 
         <Label 

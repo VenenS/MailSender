@@ -39,12 +39,14 @@ namespace MailSender
                 mm.IsBodyHtml = false;
                 SmtpClient sc = new SmtpClient(strSmtp, iSmtpPort);
                 sc.EnableSsl = true;
-                sc.DeliveryMethod = SmtpDeliveryMethod.Network;
-                sc.UseDefaultCredentials = false;
+                //sc.DeliveryMethod = SmtpDeliveryMethod.Network;
+                //sc.UseDefaultCredentials = false;
                 sc.Credentials = new NetworkCredential(strLogin, strPassword);
                 try
                 {
                     sc.Send(mm);
+                    MessageBox.Show("Почта успешно отправлена",
+                            "Успех!", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
                 catch (Exception ex)
                 {
